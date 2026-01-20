@@ -33,6 +33,11 @@ void make_meow() {
 void init_felidae(Felidae *felidae, float weight, float tail_length, void (*make_sound)()) {
     // TODO: Assign weight, tail_length, and make_sound to felidae
 
+    felidae->weight = weight;
+    felidae->tail_length = tail_length;
+    felidae->make_sound = make_sound;
+
+
     printf("Felidae constructor\n");
     printf("Weight: %.1f kg\n", felidae->weight);
     printf("Tail length: %.1f m\n", felidae->tail_length);
@@ -40,56 +45,64 @@ void init_felidae(Felidae *felidae, float weight, float tail_length, void (*make
 
 void init_panthera(Panthera *panthera, float weight, float tail_length) {
     // TODO: Initialize felidae in panthera
+    panthera->felidae.weight = weight;
+    panthera->felidae.tail_length = tail_length;
+
 
     printf("Panthera constructor\n");
 }
 
-void init_tigris(Tigris *tigris) {
+void init_tigris(Tigris *tigris) { //tigris is pointer to Tigris struct
     // TODO: Initialize panthera in tigris
+    init_panthera(&tigris->panthera, 221.2, 1.0);//access the panthera member inside the Tigris pointed to by tigris
+    
 
     printf("Tigris constructor\n");
 }
 
 void init_felis(Felis *felis, float weight, float tail_length) {
     // TODO: Initialize felidae in felis
+    felis->felidae.weight = weight;
+    felis->felidae.tail_length = tail_length;
 
     printf("Felis constructor\n");
 }
 
 void init_catus(Catus *catus) {
     // TODO: Initialize felis in catus
+    intit_felis(&catus->felis, 4.5, 0.3);
 
     printf("Catus constructor\n");
 }
 
 void deinit_felidae(Felidae *felidae) {
     // TODO: Set make_sound to NULL
-
+    felidae->make_sound = NULL;
     printf("Felidae destructor\n");
 }
 
 void deinit_panthera(Panthera *panthera) {
     printf("Panthera destructor\n");
     // TODO: Deinitialize felidae in panthera
-
+    deinit_felidae(&panthera->felidae);
 }
 
 void deinit_tigris(Tigris *tigris) {
     printf("Tigris destructor\n");
     // TODO: Deinitialize panthera in tigris
-
+    deinit_panthera(&tigris->panthera);
 }
 
 void deinit_felis(Felis *felis) {
     printf("Felis destructor\n");
     // TODO: Deinitialize felidae in felis
-
+    deinit_felidae(&felis->felidae);
 }
 
 void deinit_catus(Catus *catus) {
     printf("Catus destructor\n");
     // TODO: Deinitialize felis in catus
-    
+    deinit_felis(&catus->felis);
 }
 
 int main() {

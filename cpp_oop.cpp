@@ -61,7 +61,7 @@ public:
 
 class Catus : public Felis {
 public:
-    Catus() : Felis(4.5, 0.3) {
+    Catus() : Felis(4.5, 0.3) { //hard coded values bc this represents a specific animal
         std::cout << "Catus constructor" << std::endl;
     }
 

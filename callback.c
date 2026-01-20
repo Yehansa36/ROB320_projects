@@ -8,15 +8,17 @@ int sigcount = 0;
 
 void signal_handler(int signum) {
     // TODO: Increment counter
-
+    sigcount++;
     printf("Caught signal %d. Count = %d\n", signum, sigcount);
 }
 
 int main() {
     // TODO: Initialize signal handler for SIGINT
+    signal(SIGINT, signal_handler); //tells the OS to call signal handler when crtl+C is pressed 
 
     printf("Waiting for signal...\n");
     while (sigcount < 3) {
         sleep(1);
     }
+   
 }
