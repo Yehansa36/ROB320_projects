@@ -11,6 +11,8 @@ void dec_to_hex(char* decimal_str, char* hex_str) {
     //          decimal_str = "4096", hex_str = "1000"
 
     int num = atoi(decimal_str);
+
+    int arr[32];
     int i = 0;
 
     while (num > 0) {
@@ -20,8 +22,12 @@ void dec_to_hex(char* decimal_str, char* hex_str) {
 
     //loop through all stored numbers
     for (int j = 0; j < i; j++) {
-        int code = arr[i - j - 1];
+        int digit = arr[i - j - 1];
 
+        if (digit < 10) 
+            hex_str[j] = '0' + digit;
+        else 
+            hex_str[j] = 'A' + (digit - 10);
     }
     
 }
