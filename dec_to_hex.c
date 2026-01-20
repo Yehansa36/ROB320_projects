@@ -35,7 +35,7 @@ void dec_to_hex(char* decimal_str, char* hex_str) {
         else 
             hex_str[j] = 'A' + (digit - 10);
     }
-    hext_str[i] = '\0';
+    hex_str[i] = '\0';
     
 }
 
