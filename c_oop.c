@@ -45,9 +45,11 @@ void init_felidae(Felidae *felidae, float weight, float tail_length, void (*make
 
 void init_panthera(Panthera *panthera, float weight, float tail_length) {
     // TODO: Initialize felidae in panthera
-    panthera->felidae.weight = weight;
-    panthera->felidae.tail_length = tail_length;
-    panthera->felidae.make_sound = make_roar;
+    //panthera->felidae.weight = weight;
+    //panthera->felidae.tail_length = tail_length;
+    //panthera->felidae.make_sound = make_roar;
+
+    init_felidae(&panthera->felidae, weight, tail_length, make_roar);
 
 
     printf("Panthera constructor\n");
@@ -63,10 +65,11 @@ void init_tigris(Tigris *tigris) { //tigris is pointer to Tigris struct
 
 void init_felis(Felis *felis, float weight, float tail_length) {
     // TODO: Initialize felidae in felis
-    felis->felidae.weight = weight;
-    felis->felidae.tail_length = tail_length;
-    felis->felidae.make_sound = make_meow;
+    //felis->felidae.weight = weight;
+    //felis->felidae.tail_length = tail_length;
+    //felis->felidae.make_sound = make_meow;
 
+    init_felidae(&felis->felidae, weight, tail_length, make_meow);
     printf("Felis constructor\n");
 }
 
