@@ -70,7 +70,7 @@ void init_felis(Felis *felis, float weight, float tail_length) {
 
 void init_catus(Catus *catus) {
     // TODO: Initialize felis in catus
-    intit_felis(&catus->felis, 4.5, 0.3);
+    init_felis(&catus->felis, 4.5, 0.3);
 
     printf("Catus constructor\n");
 }

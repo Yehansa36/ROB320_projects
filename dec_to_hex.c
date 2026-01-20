@@ -9,6 +9,20 @@ void dec_to_hex(char* decimal_str, char* hex_str) {
     // TODO: Convert decimal string to hexadecimal string
     // Example: decimal_str = "255", hex_str = "FF"
     //          decimal_str = "4096", hex_str = "1000"
+
+    int num = atoi(decimal_str);
+    int i = 0;
+
+    while (num > 0) {
+        arr[i++] = num % 16; //store remainder and track how many times num is divided
+        num /= 16; //divide by 16 and go to next digit
+    }
+
+    //loop through all stored numbers
+    for (int j = 0; j < i; j++) {
+        int code = arr[i - j - 1];
+
+    }
     
 }
 
