@@ -12,6 +12,12 @@ void dec_to_hex(char* decimal_str, char* hex_str) {
 
     int num = atoi(decimal_str);
 
+    if (num == 0) {
+        hex_str[0] = '0';
+        hex_str[1] = '\0';
+        return;
+    }
+
     int arr[32];
     int i = 0;
 
@@ -29,6 +35,7 @@ void dec_to_hex(char* decimal_str, char* hex_str) {
         else 
             hex_str[j] = 'A' + (digit - 10);
     }
+    hext_str[i] = '\0';
     
 }
 
