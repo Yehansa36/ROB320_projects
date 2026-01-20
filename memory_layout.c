@@ -25,6 +25,16 @@ void find_address_extrema(AddressNamePair *pairs, int size,
                           unsigned long long *max_address) {
     // TODO: Find the minimum and maximum addresses in the pairs array.
     //       Store the results in min_address and max_address.
+    if (size <= 0) return;
+
+    *min_address = (unsigned long long)pairs[0].address;
+    *max_address = (unsigned long long)pairs[0].address;
+
+    for (int i = 1; i < size; i++) {
+        unsigned long long addr = (unsigned long long)pairs[i].address;
+        if (addr < *min_address) *min_address = addr;
+        if (addr > *max_address) *max_address = addr;
+    }
 }
 
 int compare(const void *a, const void *b) {
@@ -33,6 +43,12 @@ int compare(const void *a, const void *b) {
     //       variables.
     //       Sort by address in ascending order
     //       Return negative if a < b, 0 if a == b, positive if a > b
+    const AddressNamePair *pa = (const AddressNamePair *)a;
+    const AddressNamePair *pb = (const AddressNamePair *)b;
+
+    if (pa->address < pb->address) return -1;
+    else if (pa->address > pb->address) return 1;
+    else return 0;
 }
 
 int sort_and_print_addresses(AddressNamePair *pairs, int size,
@@ -52,10 +68,10 @@ int main(int argc, char *argv[]) {
     char stack_d;
 
     // TODO: Use malloc to allocate heap variables
-    unsigned long *heap_a = NULL;
-    short *heap_b = NULL;
-    unsigned long long *heap_c = NULL;
-    char *heap_d = NULL;
+    unsigned long *heap_a = malloc(sizeof(unsigned long));
+    short *heap_b = malloc(sizeof(short));
+    unsigned long long *heap_c = malloc(sizeof(unsigned long long));
+    char *heap_d = malloc(sizeof(char));
 
     // Store addresses and names in an array
     AddressNamePair pairs[] = {
@@ -96,6 +112,10 @@ int main(int argc, char *argv[]) {
     sort_and_print_addresses(pairs, num_pairs, min_address);
 
     // TODO: Use free to deallocate heap variables
+    free(heap_a);
+    free(heap_b);
+    free(heap_c);
+    free(heap_d);
 
     return 0;
 }
